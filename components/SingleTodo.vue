@@ -1,13 +1,14 @@
 <template>
-  <li>{{ singleTodo }}</li>
+  <li>
+    <slot />
+  </li>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class SingleTodo extends Vue {
-  @Prop() singleTodo! :string
 }
 </script>
 

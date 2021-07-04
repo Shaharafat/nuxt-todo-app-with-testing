@@ -1,6 +1,7 @@
 <template>
   <div class="w-11/12 sm:w-9/12 md:w-5/12 lg:w-4/12">
     <todo-input :todos="todos" />
+    <todo-list :todos="todos" />
   </div>
 </template>
 
