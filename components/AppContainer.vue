@@ -1,7 +1,15 @@
 <template>
   <div class="w-11/12 sm:w-9/12 md:w-5/12 lg:w-4/12">
-    <todo-input :todos="todos" />
-    <todo-list :todos="todos" @toggle-todo-complete="toggleTodo" @remove-todo="removeTodo" />
+    <p v-if="$fetchState.pending">
+      loading...
+    </p>
+    <p v-else-if="$fetchState.erro">
+      error...
+    </p>
+    <div v-else>
+      <todo-input :todos="todos" />
+      <todo-list :todos="todos" @toggle-todo-complete="toggleTodo" @remove-todo="removeTodo" />
+    </div>
   </div>
 </template>
 
@@ -15,12 +23,16 @@ export default class AppContainer extends Vue {
 
   // This will toggle the todo completed
   toggleTodo (id:string):void {
-    this.todos = this.todos.map(todo => todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo)
+    this.todos = this.todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo)
   }
 
   // This will remove a todo from list
   removeTodo (id:string):void {
     this.todos = this.todos.filter(todo => todo.id !== id)
+  }
+
+  async fetch () {
+    this.todos = await fetch('https://jsonplaceholder.typicode.com/todos/?_limit=5').then(res => res.json())
   }
 }
 </script>
