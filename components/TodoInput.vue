@@ -23,8 +23,8 @@ export default class TodoInput extends Vue {
   addTodo ():void {
     const newTodo:Todo = {
       id: nanoid(),
-      todo: this.todo,
-      isCompleted: false
+      title: this.todo,
+      completed: false
     }
 
     this.todos.push(newTodo)

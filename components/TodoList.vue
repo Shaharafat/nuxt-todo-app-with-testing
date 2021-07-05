@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(todo, index) in todos" :key="index">
+    <li class="list-item" v-for="(todo, index) in todos" :key="index">
       <single-todo :content="todo" @toggle-todo-complete="emitToggleTodo" @remove-todo="emitRemoveTodo" />
     </li>
   </ul>

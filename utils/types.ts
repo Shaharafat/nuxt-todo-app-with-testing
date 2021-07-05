@@ -1,6 +1,6 @@
 interface Todo {
   id: string,
-  userId: string,
+  userId?: string,
   title: string,
   completed: boolean,
 }
