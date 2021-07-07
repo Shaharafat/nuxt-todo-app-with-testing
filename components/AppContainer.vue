@@ -33,7 +33,7 @@ export default class AppContainer extends Vue {
     this.todos = this.todos.filter(todo => todo.id !== id)
   }
 
-  // async fetch () {
+  // asyncdata fetch () {
   //   this.todos = await fetch('https://jsonplaceholder.typicode.com/todos/?_limit=5').then(res => res.json())
   // }
 

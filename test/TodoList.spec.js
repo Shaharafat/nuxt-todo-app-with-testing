@@ -28,9 +28,22 @@ describe('Todo list item', () => {
     })
   })
 
-  test('should have length of two', () => {
+  test('should have two items initially', () => {
     expect(wrapper.find('[data-test="todo-list"]').exists()).toBe(true)
     expect(wrapper.findAll('[data-test="todo-list-item"]')).toHaveLength(2)
   })
 
+  test('should emit toggle-todo-complete', () => {
+    wrapper.vm.emitToggleTodo(1)
+
+    expect(wrapper.emitted()).toHaveProperty('toggle-todo-complete')
+    expect(wrapper.emitted('toggle-todo-complete')[0][0]).toBe(1)
+  })
+
+  test('should emit remove-todo', () => {
+    wrapper.vm.emitRemoveTodo(1)
+
+    expect(wrapper.emitted()).toHaveProperty('remove-todo')
+    expect(wrapper.emitted('remove-todo')[0][0]).toBe(1)
+  })
 })
