@@ -1,7 +1,7 @@
 <template>
-  <ul>
-    <li class="list-item" v-for="(todo, index) in todos" :key="index">
-      <single-todo :content="todo" @toggle-todo-complete="emitToggleTodo" @remove-todo="emitRemoveTodo" />
+  <ul data-test="todo-list">
+    <li v-for="(todo, index) in todos" :key="index" data-test="todo-list-item" class="list-item">
+      <single-todo data-test="todo-content" :content="todo" @toggle-todo-complete="emitToggleTodo" @remove-todo="emitRemoveTodo" />
     </li>
   </ul>
 </template>
@@ -10,7 +10,9 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Todo } from '~/utils/types'
 
-@Component
+@Component({
+  name: 'TodoList'
+})
 export default class TodoList extends Vue {
   @Prop() todos!:Todo[]
 

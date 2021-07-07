@@ -1,12 +1,13 @@
 <template>
   <div class="w-11/12 sm:w-9/12 md:w-5/12 lg:w-4/12">
-    <p v-if="$fetchState.pending">
+    <!-- <p v-if="$fetchState.pending">
       loading...
     </p>
     <p v-else-if="$fetchState.erro">
       error...
-    </p>
-    <div v-else>
+    </p> -->
+    <!-- <div v-else> -->
+    <div>
       <todo-input :todos="todos" />
       <todo-list :todos="todos" @toggle-todo-complete="toggleTodo" @remove-todo="removeTodo" />
     </div>
@@ -32,9 +33,9 @@ export default class AppContainer extends Vue {
     this.todos = this.todos.filter(todo => todo.id !== id)
   }
 
-  async fetch () {
-    this.todos = await fetch('https://jsonplaceholder.typicode.com/todos/?_limit=5').then(res => res.json())
-  }
+  // async fetch () {
+  //   this.todos = await fetch('https://jsonplaceholder.typicode.com/todos/?_limit=5').then(res => res.json())
+  // }
 
   // This is animation for every list item
   animation () {

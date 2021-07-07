@@ -1,11 +1,12 @@
 <template>
   <div class="flex shadow-md mt-3">
-    <p :class="`flex-grow bg-white px-2 py-2 ${isTodoCompleted}`">
+    <p data-test="todo-title" :class="`flex-grow bg-white px-2 py-2 ${isTodoCompleted}`">
       {{ content.title }}
     </p>
 
     <!-- Completed -->
     <span
+      data-test="todo-toggle"
       class="bg-green-400 hover:bg-green-500 text-white px-2 grid place-items-center"
       @click="toggleCompleted(content.id)"
     >
@@ -14,6 +15,7 @@
 
     <!-- Trash -->
     <span
+      data-test="remove-todo"
       class="bg-red-400 hover:bg-red-500 text-white px-2 grid place-items-center"
       @click="removeTodo(content.id)"
     >
