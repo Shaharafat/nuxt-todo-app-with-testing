@@ -1,20 +1,48 @@
 import puppeteer from "puppeteer";
 
-describe("check google", () => {
-  // beforeEach(async () => {
-  //   await page.goto("https://google.com");
-  // });
+describe("Todo app", () => {
+  let browser;
+  let page;
 
-  test('should be titled "Google"', async () => {
-    const browser = await puppeteer.launch({
+  beforeAll(async () => {
+    browser = await puppeteer.launch({
       headless: false,
       slowMo: 80,
       args: ["--window-size=1920,1080"]
     });
 
-    const page = await browser.newPage();
-    await page.goto("https://google.com");
+    page = await browser.newPage();
+    await page.goto("http://localhost:3000/");
+  });
 
-    await expect(page.title()).resolves.toMatch("Google");
-  }, 40000);
+  afterAll(async () => {
+    await browser.close();
+  });
+
+  test('should be titled "todo-list"', async () => {
+    await expect(page.title()).resolves.toMatch("todo-list");
+  }, 20000);
+
+  test("should type in todo box", async () => {
+    await page.tap('[data-test="todo-input"]');
+    await page.type('[data-test="todo-input"]', "breakfast");
+
+    const inputBoxText = await page.$eval(
+      '[data-test="todo-input"]',
+      elem => elem.value
+    );
+
+    expect(inputBoxText).toBe("hello");
+  }, 20000);
+
+  test("shoule add a new todo", async () => {
+    await page.click('[data-test="todo-submit-button"]');
+
+    const listItemCount = await page.$$eval(
+      '[data-test="todo-list-item"]',
+      elems => elems.length
+    );
+
+    expect(listItemCount).toBe(1);
+  });
 });
