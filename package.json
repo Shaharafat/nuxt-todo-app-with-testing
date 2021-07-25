@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "test": "jest --watch-all --env=jsdom --verbose ./test/unit",
+    "test": "jest --env=jsdom --verbose ./test/unit",
     "e2e": "jest --env=jest-environment-puppeteer --verbose ./test/e2e"
   },
   "dependencies": {
