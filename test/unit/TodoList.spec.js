@@ -30,7 +30,7 @@ describe('Todo list item', () => {
 
   test('should have two items initially', () => {
     expect(wrapper.find('[data-test="todo-list"]').exists()).toBe(true)
-    expect(wrapper.findAll('[data-test="todo-list-item"]')).toHaveLength(3)
+    expect(wrapper.findAll('[data-test="todo-list-item"]')).toHaveLength(2)
   })
 
   test('should emit toggle-todo-complete', () => {
