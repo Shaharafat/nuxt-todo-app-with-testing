@@ -32,7 +32,7 @@ describe("Todo app", () => {
       elem => elem.value
     );
 
-    expect(inputBoxText).toBe("hello");
+    expect(inputBoxText).toBe("breakfast");
   }, 20000);
 
   test("shoule add a new todo", async () => {
